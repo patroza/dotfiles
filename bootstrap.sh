@@ -1,8 +1,8 @@
 # stow X
 # stop Y
-stow aerospace
-stow sketchybar
-stow zsh
-stow git
+stow aerospace %1
+stow sketchybar %1
+stow zsh %1
+stow git %1
 
-cd private && ./bootstrap.sh
+cd private && ./bootstrap.sh %1
