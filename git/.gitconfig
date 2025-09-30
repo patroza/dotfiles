@@ -1,0 +1,38 @@
+[alias]
+        upc = "!git updonly \"${1:-main}\" && git checkout \"${1:-main}\" || git pull #"
+        upd = "!git updonly \"${1:-main}\" || git pull #"
+        updonly = "!git fetch `git gitremote \"$1\"` \"$1\":\"$1\" #"
+        gittrack = "!git for-each-ref --format='%(upstream:short)' $(git rev-parse --symbolic-full-name \"$1\") #"
+        gitremote = "!git gittrack \"$1\" | sed 's@/.*@@' #"
+[pull]
+        rebase = true
+[push]
+        autoSetupRemote = true
+        default = upstream
+[fetch]
+        prune = true
+[diff]
+        colorMoved = zebra
+[rebase]
+        autoStash = true
+[init]
+        defaultBranch = main
+[filter "lfs"]
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[merge]
+        tool = vscode
+[core]
+        editor = code --wait
+[difftool "vscode"]
+        cmd = code --wait --diff $LOCAL $REMOTE
+[diff]
+        tool = vscode
+[mergetool "vscode"]
+        cmd = code --wait $MERGED
