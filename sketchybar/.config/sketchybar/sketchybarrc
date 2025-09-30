@@ -62,18 +62,6 @@ sketchybar --add item space_separator left \
            background.drawing=off \
            --subscribe space_separator aerospace_workspace_change
 
-# Front app
-sketchybar --add item front_app left \
-           --set front_app \
-           icon.drawing=off \
-           label.padding_left=8 \
-           label.padding_right=8 \
-           background.corner_radius=8 \
-           background.color=$ITEM_BG_COLOR \
-           label.color=$LABEL_COLOR \
-           script="$CONFIG_DIR/scripts/front_app.sh" \
-           --subscribe front_app front_app_switched
-
 # Right side:
 # Time & Date
 sketchybar --add item calendar right \
@@ -102,6 +90,20 @@ sketchybar --add item volume right \
            --set volume background.color=0x00000000 \
                        script="$CONFIG_DIR/scripts/volume.sh" \
            --subscribe volume volume_change
+
+
+# Front app
+sketchybar --add item front_app right \
+           --set front_app \
+           icon.drawing=off \
+           label.padding_left=8 \
+           label.padding_right=8 \
+           background.corner_radius=8 \
+           background.color=$ITEM_BG_COLOR \
+           label.color=$LABEL_COLOR \
+           script="$CONFIG_DIR/scripts/front_app.sh" \
+           --subscribe front_app front_app_switched
+
 
 # Force all scripts to run the first time
 sketchybar --update
