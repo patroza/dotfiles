@@ -1,3 +1,9 @@
+[include]
+    path = ./.gitconfig-private
+
+[submodule]
+	recurse = true
+
 [alias]
         upc = "!git updonly \"${1:-main}\" && git checkout \"${1:-main}\" || git pull #"
         upd = "!git updonly \"${1:-main}\" || git pull #"
