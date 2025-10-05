@@ -25,6 +25,7 @@ exec-on-workspace-change = ['/bin/bash', '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
+on-focus-changed = ['exec-and-forget sketchybar --trigger aerospace_focus_change CHANGE_FOCUS=1']
 # Start AeroSpace at login
 start-at-login = true
 
@@ -393,5 +394,4 @@ automatically-unhide-macos-hidden-apps = true
 
     check-further-callbacks = true
     run = ['move-node-to-workspace P']
-
 
