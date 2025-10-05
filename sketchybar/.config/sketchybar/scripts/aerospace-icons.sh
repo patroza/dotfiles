@@ -13,7 +13,11 @@ for sid in $(aerospace list-workspaces --all); do
       # remove non printable chars!!
       app=$(tr -dc '[[:print:]]' <<< "$app")
       icon=$(icon_map "$app")
-      icon_strip+="$icon "
+      if [[ $icon_strip == *"$icon"* ]]; then
+        # already there
+      else
+        icon_strip+="$icon "
+      fi
       # # let's do just one icon per space for now!
       # break
     done <<<"${apps}"
