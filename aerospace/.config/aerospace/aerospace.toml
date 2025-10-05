@@ -21,11 +21,19 @@ after-startup-command = [
 #     'workspace S', 'layout floating',
 #     'workspace Z', 'layout floating'
 ]
-exec-on-workspace-change = ['/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+# ]
+# exec-on-workspace-change = ['${XDG_CONFIG_HOME}/aerospace/workspace-change.sh']
+
+exec-on-workspace-change = [
+  '/bin/zsh',
+  '-c',
+  'curl "http://localhost:7776/aerospace/spaces/refresh?space=$AEROSPACE_FOCUSED_WORKSPACE"',
 ]
 
-on-focus-changed = ['exec-and-forget sketchybar --trigger aerospace_focus_change CHANGE_FOCUS=1']
+on-focus-changed = ['exec-and-forget sketchybar --trigger aerospace_focus_change CHANGE_FOCUS=1',
+"exec-and-forget curl http://localhost:7776/aerospace/spaces/refresh",]
 # Start AeroSpace at login
 start-at-login = true
 
