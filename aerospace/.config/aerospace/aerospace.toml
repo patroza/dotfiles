@@ -25,8 +25,6 @@ exec-on-workspace-change = ['/bin/bash', '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=0'
 ]
-
-
 # Start AeroSpace at login
 start-at-login = true
 
@@ -241,6 +239,19 @@ automatically-unhide-macos-hidden-apps = true
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+# TODO: the setup for aerospace single monitor and multi monitor should be different
+# should we manage this with separate configs?
+# or should we somehow execute commands based on number of monitors detected?
+# example: Chats on second monitor can be 2-3 apps split vertically
+# but on main monitor should be accordion. we might also want to merge chats/mail/etc.
+[workspace-to-monitor-force-assignment]
+    # You can use monitor patterns to match monitors by name.
+    # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+    E = ['secondary', 'built-in']
+    M = ['secondary', 'built-in']
+    N = ['secondary', 'built-in']
+    P = ['secondary', 'built-in']
 
 #[mode.floating.binding]
 #    alt-f = [
