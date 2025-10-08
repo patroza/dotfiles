@@ -3,7 +3,6 @@
 source "$CONFIG_DIR/colors.sh"
 
 if [ "$CHANGE_FOCUS" = "1" ]; then
-  echo "Changing focus"
   source "$CONFIG_DIR/scripts/aerospace-icons.sh"
 else
   if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
@@ -11,10 +10,17 @@ else
                           background.color=$ITEM_BG_COLOR \
                           background.corner_radius=8 \
                           label.color=$LABEL_COLOR \
-                          icon.color=$LABEL_COLOR
+                          icon.color=$LABEL_COLOR \
+                          drawing="on"
   else
+    drawing="off"
+    apps=$(aerospace list-windows --workspace "$1" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+    if [ "${apps}" != "" ]; then
+      drawing="on"
+    fi
     sketchybar --set $NAME background.drawing=off \
                           label.color=$ACCENT_COLOR \
-                          icon.color=$ACCENT_COLOR
+                          icon.color=$ACCENT_COLOR \
+                          drawing=$drawing
   fi
 fi

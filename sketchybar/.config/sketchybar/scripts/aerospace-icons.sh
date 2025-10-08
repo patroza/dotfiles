@@ -2,12 +2,16 @@ source "$CONFIG_DIR/icon_map_fn.sh"
 
 
 # Load all icons on startup
-for sid in $(aerospace list-workspaces --all); do
+IFS=$'\n'
+for e in $(aerospace list-workspaces --all --format '%{workspace} %{workspace-is-focused}'); do
+IFS=$' '
+  ar=($e)
+  sid=${ar[0]}
+  focused=${ar[1]}
   apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 
-  sketchybar --set space.$sid drawing=on
-
   icon_strip=" "
+  drawing="on"
   if [ "${apps}" != "" ]; then
     while read -r app; do
       # remove non printable chars!!
@@ -20,7 +24,11 @@ for sid in $(aerospace list-workspaces --all); do
       # break
     done <<<"${apps}"
   else
-    icon_strip=" —"
+    icon_strip=""
+    drawing="off"
+    if [ "$focused" = "true" ]; then
+      drawing="on"
+    fi
   fi
-  sketchybar --animate sin 10 --set space.$sid label="$icon_strip"
+  sketchybar --animate sin 10 --set space.$sid label="$icon_strip" drawing=$drawing
 done

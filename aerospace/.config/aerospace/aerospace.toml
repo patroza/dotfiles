@@ -22,8 +22,9 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 # ]
 
 on-focus-changed = [
-    #'exec-and-forget sketchybar --trigger aerospace_focus_change CHANGE_FOCUS=1',
-"exec-and-forget curl http://localhost:7776/aerospace/spaces/refresh",]
+    'exec-and-forget sketchybar --trigger aerospace_focus_change CHANGE_FOCUS=1',
+# "exec-and-forget curl http://localhost:7776/aerospace/spaces/refresh",
+]
 # Start AeroSpace at login
 start-at-login = true
 
