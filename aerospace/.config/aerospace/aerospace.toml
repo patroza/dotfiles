@@ -4,20 +4,22 @@
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-   # 'exec-and-forget sketchybar',
+    'exec-and-forget sketchybar',
     'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0',
     'workspace T', 'layout h_tiles',
 ]
-# exec-on-workspace-change = ['/bin/bash', '-c',
-#   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-# ]
-# exec-on-workspace-change = ['${XDG_CONFIG_HOME}/aerospace/workspace-change.sh']
-
-exec-on-workspace-change = [
-  '/bin/zsh',
-  '-c',
-  'curl "http://localhost:7776/aerospace/spaces/refresh?space=$AEROSPACE_FOCUSED_WORKSPACE"',
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#   '${XDG_CONFIG_HOME}/aerospace/workspace-change.sh',
+# ]
+
+# exec-on-workspace-change = [
+#   '/bin/zsh',
+#   '-c',
+#   'curl "http://localhost:7776/aerospace/spaces/refresh?space=$AEROSPACE_FOCUSED_WORKSPACE"',
+# ]
 
 on-focus-changed = [
     #'exec-and-forget sketchybar --trigger aerospace_focus_change CHANGE_FOCUS=1',
