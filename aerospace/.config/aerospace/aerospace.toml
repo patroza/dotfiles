@@ -344,6 +344,13 @@ automatically-unhide-macos-hidden-apps = true
     run = ['move-node-to-workspace M']
 
 [[on-window-detected]]
+    if.app-id = 'com.apple.reminders'
+
+    check-further-callbacks = true
+    #run = ['move-node-to-workspace M']
+    run = 'layout floating'
+
+[[on-window-detected]]
     if.app-id = 'com.apple.iCal'
 
     check-further-callbacks = true
