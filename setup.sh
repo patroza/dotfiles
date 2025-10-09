@@ -12,6 +12,8 @@ brew install --cask font-ubuntu-mono-nerd-font
 brew install --cask font-hack-nerd-font
 brew install --cask font-sf-pro
 brew install --cask font-sketchybar-app-font
+brew install zoxide
+brew install tmux sesh
 
 # skychybar alt
 brew install --cask ubersicht
