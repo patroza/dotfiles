@@ -331,14 +331,17 @@ automatically-unhide-macos-hidden-apps = true
     check-further-callbacks = true
     run = ['move-node-to-workspace B']
 
-
-
 [[on-window-detected]]
     if.app-id = 'com.googlecode.iterm2'
 
     check-further-callbacks = true
     run = ['move-node-to-workspace T']
 
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+
+    check-further-callbacks = true
+    run = ['move-node-to-workspace T']
 
 [[on-window-detected]]
     if.app-id = 'com.apple.mail'
