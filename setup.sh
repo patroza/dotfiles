@@ -14,6 +14,7 @@ brew install --cask font-sf-pro
 brew install --cask font-sketchybar-app-font
 brew install zoxide
 brew install tmux sesh
+brew install nushell
 
 # skychybar alt
 brew install --cask ubersicht
