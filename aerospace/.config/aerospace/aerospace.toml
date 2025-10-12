@@ -226,9 +226,20 @@ cmd-alt-ctrl-e = 'mode edge'
 # TODO: worry about different profiles per computer later..
 [mode.edge.binding]
     esc = 'mode main'
+    e = ['exec-and-forget open -a "Microsoft Edge"', 'mode main']
     n = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep Work | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 1'", 'mode main']
     m = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep MACS | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 7'", 'mode main']
     d = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep dev | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 2'", 'mode main']
+
+# cmd-alt-ctrl-c = 'mode code'
+# [mode.code.binding]
+#     esc = 'mode main'
+#     c = ['exec-and-forget open -a "Visual Studio Code"', 'mode main']
+#     # TODO
+#     # n = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep Work | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 1'", 'mode main']
+#     # m = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep MACS | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 7'", 'mode main']
+#     # d = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep dev | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 2'", 'mode main']
+
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
