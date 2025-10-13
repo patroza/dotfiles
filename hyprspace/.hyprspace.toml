@@ -54,6 +54,13 @@ automatically-unhide-macos-hidden-apps = false
     outer.top =        8
     outer.right =      8
 
+[workspace-to-monitor-force-assignment]
+    # You can use monitor patterns to match monitors by name.
+    # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+    E = ['secondary', 'built-in']
+    M = ['secondary', 'built-in']
+    N = ['secondary', 'built-in']
+    P = ['secondary', 'built-in']
 
 # 'main' binding mode declaration
 # See: https://github.com/BarutSRB/HyprSpace/docs/guide#binding-modes
