@@ -197,6 +197,27 @@ automatically-unhide-macos-hidden-apps = false
 
     # no `hyprspace` cli?
     #alt-f = ['''exec-and-forget hyprspace layout floating && osascript -e 'tell application "System Events" to key code 120 using {control down, option down, command down}' || hyprspace layout dwindle''']
+    alt-f = ['layout floating tiling', '''exec-and-forget osascript -e 'tell application "System Events" to key code 120 using {control down, option down, command down}' ''']
+
+cmd-alt-ctrl-e = 'mode edge'
+#cmd-alt-ctrl-e = 'exec-and-forget open -a "Microsoft Edge"'
+
+# TODO: worry about different profiles per computer later..
+[mode.edge.binding]
+    esc = 'mode main'
+    e = ['exec-and-forget open -a "Microsoft Edge"', 'mode main']
+    n = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep Work | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 1'", 'mode main']
+    m = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep MACS | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 7'", 'mode main']
+    d = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep dev | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 2'", 'mode main']
+
+# cmd-alt-ctrl-c = 'mode code'
+# [mode.code.binding]
+#     esc = 'mode main'
+#     c = ['exec-and-forget open -a "Visual Studio Code"', 'mode main']
+#     # TODO
+#     # n = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep Work | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 1'", 'mode main']
+#     # m = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep MACS | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 7'", 'mode main']
+#     # d = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep dev | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 2'", 'mode main']
 
 # 'service' binding mode declaration.
 # See: https://github.com/BarutSRB/HyprSpace/docs/guide#binding-modes
