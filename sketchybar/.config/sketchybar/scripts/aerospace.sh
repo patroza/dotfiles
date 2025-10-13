@@ -13,14 +13,14 @@ else
                           icon.color=$LABEL_COLOR \
                           drawing="on"
   else
-    drawing="off"
-    apps=$(aerospace list-windows --workspace "$1" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-    if [ "${apps}" != "" ]; then
-      drawing="on"
-    fi
-    sketchybar --set $NAME background.drawing=off \
-                          label.color=$ACCENT_COLOR \
-                          icon.color=$ACCENT_COLOR \
-                          drawing=$drawing
+      drawing="off"
+      apps=$(aerospace list-windows --workspace "$1" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+      if [ "${apps}" != "" ]; then
+        drawing="on"
+      fi
+      sketchybar --set $NAME background.drawing=off \
+                            label.color=$ACCENT_COLOR \
+                            icon.color=$ACCENT_COLOR \
+                            drawing=$drawing
   fi
 fi
