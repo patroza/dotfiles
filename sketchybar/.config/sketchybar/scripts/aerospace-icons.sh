@@ -9,9 +9,7 @@ IFS=$'\n'
     sid=${ar[0]}
     focused=${ar[1]}
     monitor=${ar[2]}
-    echo mon: $monitor
-    echo sid: $sid
-    echo focused: $focused
+
     apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 
     icon_strip=" "
