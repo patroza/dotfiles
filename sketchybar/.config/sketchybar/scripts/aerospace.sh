@@ -2,10 +2,12 @@
 
 source "$CONFIG_DIR/colors.sh"
 
+ws=$1
+
 if [ "$CHANGE_FOCUS" = "1" ]; then
   source "$CONFIG_DIR/scripts/aerospace-icons.sh"
 else
-  if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
+  if [ "$ws" = "$FOCUSED_WORKSPACE" ]; then
     # draw the background when the workspace is focused
     sketchybar --set $NAME background.drawing=on \
                           background.color=$ITEM_BG_COLOR \
@@ -15,12 +17,16 @@ else
                           drawing="on"
   else
       # determine focused monitor by looking up $FOCUSED_WORKSPACE in list-workspaces
-      focused_monitor=$(aerospace list-workspaces --all --format '%{workspace} %{monitor-id}' | awk -v fw="$FOCUSED_WORKSPACE" '$1==fw {print $2; exit}')
-      workspace_monitor=$(aerospace list-workspaces --all --format '%{workspace} %{monitor-id}' | awk -v ws="$1" '$1==ws {print $2; exit}')
+      workspaces=`aerospace list-workspaces --all --format '%{workspace} %{monitor-id}'`
+      focused_monitor=$(echo "$workspaces" | awk -v fw="$FOCUSED_WORKSPACE" '$1==fw {print $2; exit}')
+      workspace_monitor=$(echo "$workspaces" | awk -v ws="$ws" '$1==ws {print $2; exit}')
+
+      # echo "focused monitor: $focused_monitor"
+      # echo "workspace monitor: $workspace_monitor"
 
       # do not draw the workspace when there are no apps in it
       drawing="off"
-      apps=$(aerospace list-windows --workspace "$1" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+      apps=$(aerospace list-windows --workspace "$ws" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
       if [ "${apps}" != "" ]; then
         drawing="on"
       fi
