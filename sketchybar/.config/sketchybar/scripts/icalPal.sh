@@ -6,8 +6,9 @@
 ##################################################
 # More icalPal options
 
-export ICALPAL="${ICALPAL} --cmd events --nrd --df %a %b %e, %Y %I:%M -o json"
+export ICALPAL="${ICALPAL} --cmd events --nrd --df %FT%T.%N%:z -o json"
 export ICALPAL_CONFIG=
+export TZ=/usr/share/zoneinfo/UTC
 
 
 ##################################################
@@ -50,6 +51,19 @@ event_style=(
     label.width=232
 )
 
+function formatDate {
+  /usr/bin/osascript - "$1" <<END
+
+  use framework "Foundation"
+
+  on run {isoDate}
+    set fmt to current application's NSDateFormatter's alloc()'s init()
+    fmt's setDateFormat:"yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    return (fmt's dateFromString:isoDate) as date as string
+  end run
+
+END
+}
 
 ##################################################
 # Add events to the popup
@@ -62,8 +76,9 @@ add_event() {
     COLOR=$(jq -r '.color' <<< "${EVENT}" | grep -Eio '[0-9A-F]{6}')
 
     # Split .sdate into date and time
-    DATE=${SD/%??????/      }
-    TIME=${SD/#????????????????/}
+    # hilarious..
+    DATE=`formatDate "$SD" | sed 's/ at.*//'`
+    TIME=$(echo $SD | cut -c 12-16)
 
     # Show day header only when it changes
     if [ "${DAY}" != "${DATE}" ]; then
@@ -106,7 +121,7 @@ fi
 
 make_popup() {
     first="first"
-    "${EXE}" | jq -c '.[]' | while read -r EVENT; do
+    "${EXE}" | jq -c '.[] | select((.sdate | fromrfc3339) > now)' | while read -r EVENT; do
 	add_event
     first=""
 	((N++))

@@ -6,5 +6,6 @@ stow zsh $1
 stow git $1
 stow ghostty $1
 stow hyprspace $1
+stow jq $1
 
 cd private && ./bootstrap.sh $1
