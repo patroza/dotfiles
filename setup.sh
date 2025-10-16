@@ -11,6 +11,7 @@ brew install stow
 brew install --cask font-ubuntu-mono-nerd-font
 brew install --cask font-hack-nerd-font
 brew install --cask font-sf-pro
+brew install --cask font-sf-mono
 brew install --cask font-sketchybar-app-font
 brew install zoxide eza
 brew install tmux sesh
