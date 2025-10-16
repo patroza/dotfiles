@@ -18,6 +18,7 @@ brew install tmux sesh
 brew install nushell
 brew install fastfetch btop
 brew tap ajrosen/tap && brew install icalPal
+brew install --cask font-jetbrains-mono && brew install --cask font-jetbrains-mono-nerd-font
 
 # skychybar alt
 brew install --cask ubersicht
