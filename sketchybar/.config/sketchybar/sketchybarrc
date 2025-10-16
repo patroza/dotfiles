@@ -106,6 +106,26 @@ sketchybar --add item front_app right \
            script="$CONFIG_DIR/scripts/front_app.sh" \
            --subscribe front_app front_app_switched
 
+NAME=${NAME:-icalPal}
+POS=${POS:-right}
+
+
+##################################################
+# Set some icalPal options
+
+export ICALPAL='--days 10 --li 10 --ec Birthdays'
+UPDATE_FREQ=$((15 * 60))	# Update the events every 15 minutes
+EXE=icalPal
+
+##################################################
+# Add the item
+
+sketchybar --add item "${NAME}" "${POS}" \
+	   --set "${NAME}" label="$(date "+%b %e")" \
+	   --set "${NAME}" popup.align="${POS}" popup.background.drawing=off \
+	   --set "${NAME}" update_freq="${UPDATE_FREQ}" \
+	   --set "${NAME}" script="EXE=\"${EXE}\" ICALPAL=\"${ICALPAL}\" ${CONFIG_DIR}/scripts/icalPal.sh" \
+	   --subscribe "${NAME}" mouse.{clicked,exited} mouse.exited.global
 
 source "$CONFIG_DIR/scripts/aerospace-icons.sh"
 

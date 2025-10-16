@@ -16,6 +16,7 @@ brew install zoxide eza
 brew install tmux sesh
 brew install nushell
 brew install fastfetch btop
+brew tap ajrosen/tap && brew install icalPal
 
 # skychybar alt
 brew install --cask ubersicht
