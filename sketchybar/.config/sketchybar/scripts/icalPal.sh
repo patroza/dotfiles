@@ -121,7 +121,7 @@ fi
 
 make_popup() {
     first="first"
-    "${EXE}" | jq -c 'sort_by(.sdate) | .[] | select((.sdate | fromrfc3339) > now)' | while read -r EVENT; do
+    "${EXE}" | jq -c 'sort_by(.sdate) | .[] | select((.sdate | fromrfc3339) > (now + (1 * 60 * 60)))' | while read -r EVENT; do
 	add_event
     first=""
 	((N++))

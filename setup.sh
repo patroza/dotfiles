@@ -1,3 +1,7 @@
+# manual install
+# https://github.com/patroza/alt-tab-macos
+
+# install
 brew install --cask nikitabobko/tap/aerospace
 
 brew tap FelixKratz/formulae
