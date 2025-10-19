@@ -33,12 +33,12 @@ else
 
       # only remove the background when this workspace is on the same monitor as the focused workspace
       if [ -n "$workspace_monitor" ] && [ -n "$focused_monitor" ] && [ "$workspace_monitor" = "$focused_monitor" ]; then
-      sketchybar --set $NAME background.drawing=off \
+        sketchybar --set $NAME background.drawing=off \
                             label.color=$ACCENT_COLOR \
                             icon.color=$ACCENT_COLOR \
                             drawing=$drawing
+      else
+        sketchybar --set $NAME drawing=$drawing
       fi
-
-      sketchybar --set $NAME drawing=$drawing
   fi
 fi
