@@ -28,6 +28,11 @@ brew install fastfetch btop
 brew tap ajrosen/tap && brew install icalPal
 brew install --cask font-jetbrains-mono && brew install --cask font-jetbrains-mono-nerd-font
 
+#brew install asimov
+#brew install derailed/k9s/k9s
+#brew install jesseduffield/lazydocker/lazydocker lazygit
+
+
 # skychybar alt
 brew install --cask ubersicht
 git clone https://github.com/Jean-Tinland/simple-bar $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
