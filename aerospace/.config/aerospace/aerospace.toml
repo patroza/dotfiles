@@ -422,11 +422,11 @@ cmd-alt-ctrl-e = 'mode edge'
     if.app-id = 'com.apple.MobileSMS'
 
     check-further-callbacks = true
-    run = ['move-node-to-workspace P']
+    run = ['move-node-to-workspace E']
 
 [[on-window-detected]]
     if.app-id = 'net.whatsapp.WhatsApp'
 
     check-further-callbacks = true
-    run = ['move-node-to-workspace P']
+    run = ['move-node-to-workspace E']
 
