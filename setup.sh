@@ -19,6 +19,7 @@ brew install --cask font-sf-mono
 brew install --cask font-sketchybar-app-font
 brew install --cask font-inconsolata-nerd-font
 brew install --cask font-caskaydia-cove-nerd-font
+brew install --cask font-caskaydia-mono-nerd-font
 brew install --cask font-cascadia-code-nf
 brew install --cask font-meslo-lg-nerd-font
 brew install zoxide eza
