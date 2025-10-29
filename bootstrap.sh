@@ -8,5 +8,6 @@ stow ghostty $1
 stow hyprspace $1
 stow jq $1
 stow nvim $1
+stow atuin $1
 
 cd private && ./bootstrap.sh $1
