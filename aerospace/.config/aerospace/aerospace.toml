@@ -226,7 +226,9 @@ automatically-unhide-macos-hidden-apps = true
     #alt-f = 'exec-and-forget ${XDG_CONFIG_HOME}/aerospace/toggle-floating-centered.sh'
     alt-f = ['''exec-and-forget aerospace layout floating && osascript -e 'tell application "System Events" to key code 120 using {control down, option down, command down}' || aerospace layout tiling''']
 
-cmd-alt-ctrl-e = 'mode edge'
+cmd-alt-ctrl-b = 'mode edge'
+cmd-alt-ctrl-c = 'mode code'
+
 #cmd-alt-ctrl-e = 'exec-and-forget open -a "Microsoft Edge"'
 
 # TODO: worry about different profiles per computer later..
@@ -237,15 +239,13 @@ cmd-alt-ctrl-e = 'mode edge'
     m = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep MACS | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 7'", 'mode main']
     d = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep dev | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 2'", 'mode main']
 
-# cmd-alt-ctrl-c = 'mode code'
-# [mode.code.binding]
-#     esc = 'mode main'
-#     c = ['exec-and-forget open -a "Visual Studio Code"', 'mode main']
-#     # TODO
-#     # n = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep Work | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 1'", 'mode main']
-#     # m = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep MACS | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 7'", 'mode main']
-#     # d = ["exec-and-forget aerospace focus --window-id `aerospace list-windows --all | grep Edge | grep dev | awk '{print $1}'` || open -na 'Microsoft Edge' --args --profile-directory='Profile 2'", 'mode main']
-
+[mode.code.binding]
+    esc = 'mode main'
+    slash = ['exec-and-forget open -na "Visual Studio Code"', 'mode main']
+    period = ['exec-and-forget open -na "Visual Studio Code" --args ~/dotfiles', 'mode main']
+    s = ['exec-and-forget open -na "Visual Studio Code" --args ~/pj/macs/scanner', 'mode main']
+    c = ['exec-and-forget open -na "Visual Studio Code" --args ~/pj/macs/configurator', 'mode main']
+    g = ['exec-and-forget open -na "Visual Studio Code" --args ~/pj/nomizz/signalznow', 'mode main']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
